@@ -344,4 +344,7 @@
     </div>
   </div>
 </div>
-<p-progressSpinner strokeWidth="5" [style]="{margin:'auto'}"></p-progressSpinner>
+<div style="text-align: center;">
+  <p-progressSpinner *ngIf="loading" strokeWidth="5" [style]="{margin:'auto'}"></p-progressSpinner>
+</div>
+
