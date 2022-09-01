@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.use(express.static(__dirname + '/dist/mahmood-shamie-resume'));
+app.use(express.static(__dirname + '/dist/angular-dashboard'));
 app.get('/*', function(req,res)
 
-{res.sendFile(path.join(__dirname+'/dist/mahmood-shamie-resume/index.html'));});
+{res.sendFile(path.join(__dirname+'/dist/angular-dashboard/index.html'));});
 
 app.listen(process.env.PORT || 8080);
