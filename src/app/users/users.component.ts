@@ -61,8 +61,8 @@ export class UsersComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator!;
     setTimeout(() => {
       this.http
-        .get<any>('http://127.0.0.1:8081/users/all')
-        // .get<any>('https://salty-tor-51245.herokuapp.com/users/all')
+        // .get<any>('http://127.0.0.1:8081/users/all')
+        .get<any>('https://salty-tor-51245.herokuapp.com/users/all')
         .subscribe((data) => {
           this.dataSource.data = data;
           this.loading = false;
