@@ -1,0 +1,55 @@
+<div id="navDiv">
+  <div id="navimage" style="background-color: aquamarine;">
+    <img [src]="navImage" alt=""
+      style="position: absolute;top: 0;left: 0;width: 100%; background-size: cover;overflow: hidden;height: 115px;">
+  </div>
+  <nav class="container-fluid navbar navbar-expand-lg navbar-expand-md ">
+    <div class="container-fluid">
+      <div class="col" style="margin: auto;text-align: center;">
+        <a class="navbar-brand" href="#">E.MAHMOOD SHAMIEH</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul id="sections" class="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
+            <li id="1" style="color: aliceblue; " class="nav-item" role="button" (click)="navigate('1')">
+              <div class="col"><a class="nav-link active" aria-current="page" href="#">Career objective</a>
+                <div class="container" id="spacer"></div>
+              </div>
+            </li>
+            <li id="2" style="color: aliceblue; " class="nav-item" role="button" (click)="navigate('2')">
+              <div class="col">
+                <a class="nav-link active" aria-current="page" href="#">Work experince</a>
+                <div class="container" id="spacer">
+                </div>
+              </div>
+            </li>
+            <li id="3" style="color: aliceblue; " class="nav-item" role="button" (click)="navigate('3')">
+              <div class="col"><a class="nav-link active" aria-current="page" href="#">Education</a>
+                <div class="container" id="spacer"></div>
+              </div>
+            </li>
+            <li id="4" style="color: aliceblue; " class="nav-item" role="button" (click)="navigate('4')">
+              <div class="col"> <a class="nav-link active" aria-current="page" href="#">Skills</a>
+                <div class="container" id="spacer"></div>
+              </div>
+            </li>
+            <li id="5" style="color: aliceblue; " class="nav-item" role="button" (click)="navigate('5')">
+              <div class="col"> <a class="nav-link active" aria-current="page" href="#">Projects</a>
+                <div class="container" id="spacer"></div>
+              </div>
+            </li>
+            <li id="6" style="color: aliceblue; " class="nav-item" role="button" (click)="navigate('6')">
+              <div class="col">
+                <a class="nav-link active" aria-current="page" href="#">Contact us</a>
+                <div class="container" id="spacer"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

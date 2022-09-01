@@ -1,0 +1,152 @@
+.sidenave {
+  background-color: rgb(56, 56, 56);
+  transition: all .5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  /* width: 5rem; */
+  height: 100%;
+  /* overflow-x: auto; */
+  /* overflow-y: auto; */
+  box-shadow: 0.063rem 0 1.25rem 0 rgb(56, 56, 56);
+}
+
+.logo-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0.938rem 0.938rem 0 0.938rem;
+  width: 100%;
+}
+
+.logo {
+  background-color: white;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 6px;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+.logo-text {
+  display: flex;
+  margin-left: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  color: aliceblue;
+}
+
+.close-button {
+  /* margin-left: auto; */
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  /* position: absolute; */
+  /* right: 20px; */
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  font-weight: 900;
+  font-size: 24px;
+  color: aliceblue;
+}
+
+.collapsed {
+  /* width: 16.5rem; */
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  display: block;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  overflow-x: auto;
+  scrollbar-color: dark !important;
+  height: calc(100% - 3.5rem);
+  cursor: pointer;
+
+}
+
+.sidenav-nav-item {
+  /* display: flex; */
+  /* width: 100%; */
+  position: relative;
+  text-align: center;
+  margin-bottom: 5px;
+
+}
+
+.sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: aliceblue;
+  text-decoration: none;
+  transition: color .3s ease;
+  font-weight: 300;
+  border-radius: 10px;
+
+}
+
+.sidenav-link-text {
+  display: flex;
+  width: 100%;
+  margin-left: 1.5rem;
+}
+
+.sidenav-link-icon {
+  /* text-align: center; */
+  /* align-items: center; */
+  /* vertical-align: middle; */
+  /* justify-content: center; */
+  font-size: 28px;
+  /* font-weight: 900; */
+  margin: 10px 10px;
+  /* color: aqua; */
+  width: 28px;
+  min-width: 28px
+    /* padding: 4px 4px; */
+}
+
+.auto-margin {
+  /* margin-left: 100; */
+  /* margin: auto; */
+}
+
+.active-element {
+  background-color: aliceblue;
+
+}
+
+.active-element .sidenav-link-icon {
+  color: rgb(56, 56, 56);
+
+}
+
+.active-element .sidenav-link-text {
+  color: rgb(56, 56, 56);
+  font-weight: 700;
+
+}
+
+.sidenav-nav-item .sidenav-nav-link:hover {
+  background-color: aliceblue;
+  color: rgb(56, 56, 56);
+  font-weight: 300;
+
+}
+
+.sidenav-nav-item .sidenav-link-icon:hover {
+  color: rgb(56, 56, 56);
+
+}

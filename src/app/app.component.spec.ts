@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-dashboard'`, () => {
+  it(`should have as title 'mahmood-shamie-resume'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-dashboard');
+    expect(app.title).toEqual('mahmood-shamie-resume');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-dashboard app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('mahmood-shamie-resume app is running!');
   });
 });

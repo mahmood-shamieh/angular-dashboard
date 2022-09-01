@@ -1,0 +1,152 @@
+<div class="dialog-div">
+  <!-- <h1 mat-dialog-title>Alert Box </h1> -->
+  <div *ngIf="data.dialogType == 5 && !isLoading">
+    <div>
+      <fa-icon *ngIf="data.active" [icon]="diactiveUserIcon" style="color:#212529;"></fa-icon>
+      <fa-icon *ngIf="!data.active" [icon]="activeUserIcon" style="color:#1a8654;"></fa-icon>
+      <h3 *ngIf="data.active">Deactivate User</h3>
+      <h3 *ngIf="!data.active">Activate User</h3>
+    </div>
+    <div mat-dialog-content>
+      <p>{{data.message}}</p>
+    </div>
+    <div mat-dialog-actions>
+      <button type="button" class="btn btn-outline-primary">Confirm</button>
+      <button type="button" class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
+    </div>
+  </div>
+  <div *ngIf="data.dialogType == 4 && !isLoading">
+    <div>
+      <fa-icon [icon]="alertIcon" style="color: #d93545;"></fa-icon>
+      <h3>Delete User</h3>
+    </div>
+    <div mat-dialog-content>
+      <p>{{data.message}}</p>
+    </div>
+    <div mat-dialog-actions>
+      <button type="button" class="btn btn-outline-primary">Confirm</button>
+      <button type="button" class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
+    </div>
+  </div>
+  <div *ngIf="data.dialogType == 3">
+    <fa-icon [icon]="editIcon" style="color: #fdbf07;"></fa-icon>
+    <h3>Edit user details</h3>
+  </div>
+  <div mat-dialog-content *ngIf="data.dialogType == 3 && !isLoading">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form action="" method="post">
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.id ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.username ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.firstName ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.LastName ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.middleName ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.LevelId ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.balance ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.address ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.gender ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.verified ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.email ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.mobile ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.phone ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{userData.createdAt ?? 'no-content'}}</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Age</mat-label>
+        <input matInput [placeholder]="userData.age?? 'no-content'">
+      </mat-form-field>
+    </form>
+
+  </div>
+  <div mat-dialog-actions *ngIf="data.dialogType == 3">
+    <button type="button" class="btn btn-outline-primary">Confirm</button>
+    <button type="button" class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
+  </div>
+  <div *ngIf="data.dialogType == 2">
+    <fa-icon [icon]="informationIcon" style="color: #0dcaf0;"></fa-icon>
+    <h3>Show user profile</h3>
+  </div>
+  <div mat-dialog-content *ngIf="data.dialogType == 2 && !isLoading">
+    <p>{{userData.id ?? 'no-content'}}</p>
+    <p>{{userData.username ?? 'no-content'}}</p>
+    <p>{{userData.firstName ?? 'no-content'}}</p>
+    <p>{{userData.LastName ?? 'no-content'}}</p>
+    <p>{{userData.middleName ?? 'no-content'}}</p>
+    <p>{{userData.LevelId ?? 'no-content'}}</p>
+    <p>{{userData.balance ?? 'no-content'}}</p>
+    <p>{{userData.address ?? 'no-content'}}</p>
+    <p>{{userData.gender ?? 'no-content'}}</p>
+    <p>{{userData.verified ?? 'no-content'}}</p>
+    <p>{{userData.email ?? 'no-content'}}</p>
+    <p>{{userData.mobile ?? 'no-content'}}</p>
+    <p>{{userData.phone ?? 'no-content'}}</p>
+    <p>{{userData.createdAt ?? 'no-content'}}</p>
+    <p>{{userData.age ?? 'no-content'}}</p>
+
+
+  </div>
+  <div mat-dialog-actions *ngIf="data.dialogType == 2 ">
+    <button type="button" class="btn btn-outline-primary">Confirm</button>
+    <button type="button" class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
+  </div>
+  <div *ngIf="data.dialogType == 1">
+    <fa-icon [icon]="editIcon" style="color: #0f6df7;"></fa-icon>
+    <h3>Send notification</h3>
+  </div>
+  <div mat-dialog-content *ngIf="data.dialogType == 1 && !isLoading">
+    <p>{{data.message}}</p>
+    <form action="" method="post">
+      <mat-form-field style="display: block;width: 90%;margin: auto; min-width: 90%;max-width: 90%;"
+        appearance="outline">
+        <mat-label>Notification content</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions *ngIf="data.dialogType == 1 && !isLoading">
+    <button type="button" class="btn btn-outline-primary">Confirm</button>
+    <button type="button" class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
+  </div>
+
+</div>

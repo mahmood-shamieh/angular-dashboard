@@ -1,0 +1,76 @@
+.sidenav-nav {
+  list-style: none;
+  /* padding: 1rem; */
+  margin: 0;
+  display: block;
+  text-align: left;
+  height: calc(100% - 3.5rem);
+  cursor: pointer;
+  transition: all .5s ease;
+
+}
+
+.sidenav-nav-item {
+  text-align: left;
+  margin-top: 5px;
+
+}
+
+.sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: #eee;
+  text-decoration: none;
+  transition: color .3s ease;
+  font-weight: 300;
+  border-radius: 10px;
+
+}
+
+.sidenav-link-text {
+  width: 100%;
+  margin-left: 1.5rem;
+}
+
+.sidenav-link-icon {
+  text-align: center;
+  align-items: center;
+  font-size: 28px;
+  /* font-weight: 900; */
+  margin: 10px 10px;
+  width: 28px;
+  min-width: 28px
+    /* padding: 4px 4px; */
+}
+
+
+
+.active-element {
+  background-color: #eee;
+
+}
+
+.active-element .sidenav-link-icon {
+  color: rgb(56, 56, 56);
+
+}
+
+.active-element .sidenav-link-text {
+  color: rgb(56, 56, 56);
+  /* color: #eee; */
+  font-weight: 700;
+
+}
+
+.sidenav-nav-item .sidenav-nav-link:hover {
+  background-color: #eee;
+  color: rgb(56, 56, 56);
+  font-weight: 300;
+
+}
+
+.sidenav-nav-item .sidenav-link-icon:hover {
+  color: rgb(56, 56, 56);
+
+}

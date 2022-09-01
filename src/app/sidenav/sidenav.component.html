@@ -1,0 +1,27 @@
+<div class="sidenave" [ngClass]="collapsed ? 'collapsed' : ''">
+  <div class="logo-container" >
+    <button class="logo" (click)="collapsedBar()">
+      A
+    </button>
+    <div class="logo-text" *ngIf="collapsed" @fadeInOut>
+      <a style="  cursor: pointer; text-decoration: none ;color: aliceblue;" (click)="navigateToHome()">Angular Dashboard</a>
+    </div>
+    <button class="close-button" *ngIf="collapsed" (click)="collapsedBar()" @rotate>
+      <fa-icon class="sidenav-link-icon-toggle" [icon]="closeButtonIcon" style="margin: auto;"></fa-icon>
+    </button>
+  </div>
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-item" *ngFor="let navItem of navData" (click)="expandList(navItem)">
+      <a class="sidenav-nav-link" [routerLink]="navItem.routerLink" routerLinkActive="active-element"
+        [routerLinkActiveOptions]="{exact:true}">
+        <fa-icon class="sidenav-link-icon" [icon]="navItem.icon" [ngClass]="!collapsed ? 'auto-margin' : ''"></fa-icon>
+        <span class="sidenav-link-text" *ngIf="collapsed" @fadeInOut>{{navItem.label}}</span>
+        <fa-icon class="sidenav-link-icon" [icon]="navItem.expanded ? arrowUpIcon :  arrowDownIcon"
+          *ngIf="navItem.items!.length > 0 && collapsed"></fa-icon>
+      </a>
+      <div>
+        <app-sub-menu [levelData]="navItem" [collapesd]="collapsed"></app-sub-menu>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,47 @@
+ul{
+  width: fit-content;
+  margin: auto;
+  list-style:none !important ;
+
+}
+ul li{
+  padding: 10px 10px !important;
+  height: 45px !important;
+}
+a:link {
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+a:visited {
+  color: white;
+}
+
+.container{
+  display: block;
+  width: fit-content !important;
+  border-radius: 10px;
+  margin: auto 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* background-color: aqua; */
+
+}
+.container:hover{
+  background-color: rgba(168, 168, 168, 0.336);
+
+}
+
+div img{
+  /* float: left; */
+  /* display: inline-block; */
+  width:90px;
+  height:70px;
+  margin:10px 10px ;
+  /* float: left; */
+  /* background-color: aqua; */
+}
+div{
+  position: relative;
+}

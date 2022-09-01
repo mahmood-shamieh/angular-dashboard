@@ -1,0 +1,268 @@
+<h2>Search field</h2>
+<mat-form-field id="search-field" appearance="outline" >
+    <mat-label>Enter search text</mat-label>
+    <textarea matInput rows = 3></textarea>
+</mat-form-field>
+<h2>Search options</h2>
+<mat-form-field appearance="outline" style="padding-left: 20px;">
+  <mat-label>Search options</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let item of displayedColumns" [value]="item">
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<h2>Filters</h2>
+<div>
+  <mat-chip-list aria-label="Filters" *ngIf="!loading" selectable multiple style="padding-left: 200px;">
+    <!-- <mat-chip [ngStyle]="{color: getRandomColor()}">One fish</mat-chip> -->
+    <!-- <mat-chip [color]="getRandomColor()">One fish</mat-chip>
+    <mat-chip [color]="getRandomColor()">Two fish</mat-chip>
+    <mat-chip [color]="getRandomColor()" selected>Primary fish</mat-chip>
+    <mat-chip [color]="getRandomColor()" selected>Accent fish</mat-chip> -->
+    <mat-chip color="accent" #c="matChip" *ngFor="let item of displayedColumns" [value] = 'item' (click)="toggleSelection(c)">{{item}}</mat-chip>
+  </mat-chip-list>
+  <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" [value]="progressValue"></mat-progress-bar> -->
+  <p-progressBar [showValue]="loading"  mode="indeterminate" [value]="20"></p-progressBar>
+</div>
+
+<div
+  style="text-align: center; position: relative;width:fit-content ;  width: 100%; overflow-y: auto;overflow-x: auto; height: 92%; border-radius: 10px;margin-top: 20px;">
+  <mat-spinner *ngIf="loading" style="position: absolute;top: 50%; left: 50%;;"></mat-spinner>
+  <table mat-table [dataSource]="dataSource!">
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" data-label="Actions">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>ACTIONS : </span>
+          </div>
+          <div class="table-data">
+            <button class="btn btn-outline-primary"
+              (click)="openDialog('are you sure you want to send notification',1)">
+              <fa-icon [icon]="sendNotificationIcon"></fa-icon>
+            </button>
+            <button class="btn btn-outline-warning"
+              (click)="openDialog('are you sure you want to send notification',3,element.id)">
+              <fa-icon [icon]="editIcon"></fa-icon>
+            </button>
+            <button class="btn btn-outline-danger" (click)="openDialog('are you sure you want to delete this user',4)">
+              <fa-icon [icon]="deleteIcon"></fa-icon>
+            </button>
+            <button *ngIf="element.active" class="btn btn-outline-success"
+              (click)="openDialog('are you sure you want to diactivate this user',5,0,true)">
+              <fa-icon [icon]="notActiveIcon"></fa-icon>
+            </button>
+            <button *ngIf="!element.active" class="btn btn-outline-dark"
+              (click)="openDialog('are you sure you want to active this user',5,0,false)">
+              <fa-icon [icon]="activeIcon"></fa-icon>
+            </button>
+            <button class="btn btn-outline-info"
+              (click)="openDialog('are you sure you want to send notification',2,element.id)">
+              <fa-icon [icon]="infoIcon"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+      </td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element" data-label="ID">
+        <div class="row">
+          <div class="table-head"><span>id :</span></div>
+          <p class="table-data">{{element.id??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="USERNAME">
+      <th mat-header-cell *matHeaderCellDef>USERNAME</th>
+      <td mat-cell *matCellDef="let element" data-label="USERNAME">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>USERNAME : </span>
+          </div>
+          <p class="table-data">{{element.username??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="AGE">
+      <th mat-header-cell *matHeaderCellDef>AGE</th>
+      <td mat-cell *matCellDef="let element" data-label="AGE">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>AGE : </span>
+          </div>
+          <p class="table-data">{{element.age??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="CREATED-AT">
+      <th mat-header-cell *matHeaderCellDef>CREATED-AT</th>
+      <td mat-cell *matCellDef="let element" data-label="CREATED-AT">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>CREATED AT : </span>
+          </div>
+          <p class="table-data">{{element.createdAt??'empty field'}}</p>
+        </div>
+
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="PHONE">
+      <th mat-header-cell *matHeaderCellDef>PHONE</th>
+      <td mat-cell *matCellDef="let element" data-label="PHONE">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>PHONE : </span>
+          </div>
+          <p class="table-data">{{element.phone??'empty field'}}</p>
+        </div>
+
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="MOBILE">
+      <th mat-header-cell *matHeaderCellDef>MOBILE</th>
+      <td mat-cell *matCellDef="let element" data-label="MOBILE">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>MOBILE : </span>
+          </div>
+          <p class="table-data">{{element.mobile??'empty field'}}</p>
+        </div>
+
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="EMAIL">
+      <th mat-header-cell *matHeaderCellDef>EMAIL</th>
+      <td mat-cell *matCellDef="let element" data-label="EMAIL">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>EMAIL : </span>
+          </div>
+          <p class="table-data">{{element.mobile??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="VERIFIED">
+      <th mat-header-cell *matHeaderCellDef>VERIFIED</th>
+      <td mat-cell *matCellDef="let element" data-label="VERIFIED">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>VERIFIED : </span>
+          </div>
+          <p class="table-data">{{element.verified??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="GENDER">
+      <th mat-header-cell *matHeaderCellDef>GENDER</th>
+      <td mat-cell *matCellDef="let element" data-label="GENDER">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>GENDER : </span>
+          </div>
+          <p class="table-data">{{element.gender??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="FIRST-NAME">
+      <th mat-header-cell *matHeaderCellDef>FIRST-NAME</th>
+      <td mat-cell *matCellDef="let element" data-label="FIRST-NAME">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>FIRST-NAME : </span>
+          </div>
+          <p class="table-data">{{element.firstName??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="LAST-NAME">
+      <th mat-header-cell *matHeaderCellDef>LAST-NAME</th>
+      <td mat-cell *matCellDef="let element" data-label="LAST-NAME">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>LAST-NAME</span>
+          </div>
+          <p class="table-data">{{element.lastName??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="MIDDLE-NAME">
+      <th mat-header-cell *matHeaderCellDef>MIDDLE-NAME</th>
+      <td mat-cell *matCellDef="let element" data-label="MIDDLE-NAME">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>MIDDLE-NAME : </span>
+          </div>
+          <p class="table-data">{{element.middleName??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="BALANCE">
+      <th mat-header-cell *matHeaderCellDef>BALANCE</th>
+      <td mat-cell *matCellDef="let element" data-label="BALANCE">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>BALANCE : </span>
+          </div>
+          <p class="table-data">{{element.balance??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="ADRESS">
+      <th mat-header-cell *matHeaderCellDef>ADRESS</th>
+      <td mat-cell *matCellDef="let element" data-label="ADRESS">
+        <div class="row" style="justify-content: center;">
+          <div class="table-head">
+            <span>ADDRESS : </span>
+          </div>
+          <p class="table-data">{{element.address??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="LEVEL-ID">
+      <th mat-header-cell *matHeaderCellDef>LEVEL-ID</th>
+      <td mat-cell *matCellDef="let element" data-label="LEVEL-ID">
+        <div class="row">
+          <div class="table-head">
+            <span>LEVEL-ID : </span>
+          </div>
+          <p class="table-data">{{element.levelId??'empty field'}}</p>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" data-label="Actions" style="padding-right:0px; ">
+        <button class="btn btn-primary">add</button>
+        <button class="btn btn-secondary">send notification</button>
+        <button class="btn btn-success">edit</button>
+        <button class="btn btn-danger">delete</button>
+        <button class="btn btn-warning">active</button>
+        <button class="btn btn-info">info</button>
+        <button class="btn btn-dark">archive</button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <div *ngIf="!loading">
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </div>
+  </table>
+
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator> -->
+</div>

@@ -1,0 +1,16 @@
+
+<!-- && levelData!.items!.length >= 0 -->
+<ul class="sidenav-nav" *ngIf="collapesd && levelData!.expanded ">
+  <li class="sidenav-nav-item" *ngFor="let data of levelData!.items" (click)="expandList(data)">
+    <a class="sidenav-nav-link" [routerLink]="data!.routerLink" routerLinkActive="active-element"
+      [routerLinkActiveOptions]="{exact:true}" href="" *ngIf="data!.items!.length >= 0">
+      <fa-icon [ngClass]="!collapesd ? 'auto-margin' : ''" class="sidenav-link-icon" [icon]="data.icon!"></fa-icon>
+      <span class="sidenav-link-text" >{{data.label}}</span>
+      <fa-icon class="sidenav-link-icon" [icon]="data!.expanded ? arrowUpIcon :  arrowDownIcon"
+          *ngIf="data!.items!.length > 0"></fa-icon>
+    </a>
+    <div *ngIf="data.items!.length >= 0">
+      <app-sub-menu [levelData]="data" [collapesd]="data.expanded"></app-sub-menu>
+    </div>
+  </li>
+</ul>
