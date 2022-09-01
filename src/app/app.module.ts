@@ -26,6 +26,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import {StyleClassModule} from 'primeng/styleclass';
+import {ChipModule} from 'primeng/chip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { HttpClientModule } from '@angular/common/http';
@@ -65,7 +66,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     MatSelectModule,
     MatChipsModule,
     ProgressBarModule,
-    StyleClassModule
+    StyleClassModule,ChipModule
   ],
   providers: [],
   bootstrap: [AppComponent],

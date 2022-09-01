@@ -33,7 +33,7 @@
     <h3>Edit user details</h3>
   </div>
   <div mat-dialog-content *ngIf="data.dialogType == 3 && !isLoading">
-    <p-progressSpinner *ngIf="isLoading" strokeWidth='5' ></p-progressSpinner>
+    <p-progressSpinner *ngIf="isLoading" strokeWidth='5'></p-progressSpinner>
     <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
     <form action="" method="post">
       <mat-form-field appearance="outline">
@@ -108,23 +108,68 @@
     <h3>Show user profile</h3>
   </div>
   <div mat-dialog-content *ngIf="data.dialogType == 2 && !isLoading">
-    <p>{{userData.id ?? 'no-content'}}</p>
-    <p>{{userData.username ?? 'no-content'}}</p>
-    <p>{{userData.firstName ?? 'no-content'}}</p>
-    <p>{{userData.LastName ?? 'no-content'}}</p>
-    <p>{{userData.middleName ?? 'no-content'}}</p>
-    <p>{{userData.LevelId ?? 'no-content'}}</p>
-    <p>{{userData.balance ?? 'no-content'}}</p>
-    <p>{{userData.address ?? 'no-content'}}</p>
-    <p>{{userData.gender ?? 'no-content'}}</p>
-    <p>{{userData.verified ?? 'no-content'}}</p>
-    <p>{{userData.email ?? 'no-content'}}</p>
-    <p>{{userData.mobile ?? 'no-content'}}</p>
-    <p>{{userData.phone ?? 'no-content'}}</p>
-    <p>{{userData.createdAt ?? 'no-content'}}</p>
-    <p>{{userData.age ?? 'no-content'}}</p>
 
+    <div class="surface-section">
+      <ul class="list-none p-0 m-0">
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">id</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.id ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">username</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.username ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">firstName</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.firstName ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">LastName</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.LastName ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">middleName</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.middleName ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">LevelId</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.LevelId ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">balance</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.balance ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">address</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.address ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">gender</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.gender ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">verified</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.verified ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">mobile</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.mobile ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">phone</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.phone ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">createdAt</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.createdAt ?? 'no-content'}}</div>
+        </li>
+        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+          <div class="text-500 w-6 md:w-2 font-medium">age</div>
+          <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{userData.age ?? 'no-content'}}</div>
+        </li>
 
+      </ul>
+    </div>
   </div>
   <div mat-dialog-actions *ngIf="data.dialogType == 2 ">
     <button type="button" class="btn btn-outline-primary">Confirm</button>
