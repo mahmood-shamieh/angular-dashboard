@@ -23,6 +23,7 @@
     <mat-chip color="accent" #c="matChip" *ngFor="let item of displayedColumns" [value] = 'item' (click)="toggleSelection(c)">{{item}}</mat-chip>
   </mat-chip-list>
   <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" [value]="progressValue"></mat-progress-bar> -->
+
   <p-progressBar [showValue]="loading"  mode="indeterminate" [value]="20"></p-progressBar>
 </div>
 

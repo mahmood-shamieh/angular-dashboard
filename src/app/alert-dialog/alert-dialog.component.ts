@@ -41,9 +41,9 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
       case 2: {
         console.log(this.data.userId);
         this.httpClient
-          // .get<any>('https://salty-tor-51245.herokuapp.com/users/' + this.data.userId)
+          .get<any>('https://salty-tor-51245.herokuapp.com/users/' + this.data.userId)
 
-          .get<any>('http://127.0.0.1:8081/users/' + this.data.userId)
+          // .get<any>('http://127.0.0.1:8081/users/' + this.data.userId)
           .subscribe(
             (data) => {
               console.log(data);
@@ -58,9 +58,9 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
       }
       case 3: {
         this.httpClient
-          // .get<any>('https://salty-tor-51245.herokuapp.com/users/' + this.data.userId)
+          .get<any>('https://salty-tor-51245.herokuapp.com/users/' + this.data.userId)
 
-          .get<any>('http://127.0.0.1:8081/users/' + this.data.userId)
+          // .get<any>('http://127.0.0.1:8081/users/' + this.data.userId)
           .subscribe(
             (data) => {
               console.log(data);
