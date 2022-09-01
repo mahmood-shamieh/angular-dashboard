@@ -69,6 +69,12 @@ button {
   width: 60%;
 }
 
+::ng-deep .custom-style {
+  height: 6px;
+  color: #3f51b5;
+  border-radius: 5px;
+}
+
 @media(max-width:600px) {
   .row {
     width: 100%;
@@ -122,7 +128,8 @@ button {
     height: auto;
     word-break: break-word;
   }
-  #search-field{
+
+  #search-field {
     width: 100%;
   }
 }

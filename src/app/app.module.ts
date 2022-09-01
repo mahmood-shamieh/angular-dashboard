@@ -22,13 +22,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {ProgressBarModule} from 'primeng/progressbar';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import {StyleClassModule} from 'primeng/styleclass';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { HttpClientModule } from '@angular/common/http';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
 @NgModule({
@@ -53,7 +53,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     NgbModule,
     FontAwesomeModule,
     MatTableModule,
-    MatProgressSpinnerModule,
+    ProgressSpinnerModule,
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
@@ -64,8 +64,8 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     FormsModule,
     MatSelectModule,
     MatChipsModule,
-    MatProgressBarModule,
-    ProgressBarModule
+    ProgressBarModule,
+    StyleClassModule
   ],
   providers: [],
   bootstrap: [AppComponent],

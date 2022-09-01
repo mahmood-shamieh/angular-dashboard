@@ -1,7 +1,7 @@
 <h2>Search field</h2>
-<mat-form-field id="search-field" appearance="outline" >
-    <mat-label>Enter search text</mat-label>
-    <textarea matInput rows = 3></textarea>
+<mat-form-field id="search-field" appearance="outline">
+  <mat-label>Enter search text</mat-label>
+  <textarea matInput rows=3></textarea>
 </mat-form-field>
 <h2>Search options</h2>
 <mat-form-field appearance="outline" style="padding-left: 20px;">
@@ -20,16 +20,19 @@
     <mat-chip [color]="getRandomColor()">Two fish</mat-chip>
     <mat-chip [color]="getRandomColor()" selected>Primary fish</mat-chip>
     <mat-chip [color]="getRandomColor()" selected>Accent fish</mat-chip> -->
-    <mat-chip color="accent" #c="matChip" *ngFor="let item of displayedColumns" [value] = 'item' (click)="toggleSelection(c)">{{item}}</mat-chip>
+    <mat-chip color="accent" #c="matChip" *ngFor="let item of displayedColumns" [value]='item'
+      (click)="toggleSelection(c)">{{item}}</mat-chip>
   </mat-chip-list>
-  <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" [value]="progressValue"></mat-progress-bar> -->
+  <!-- <mat-progress-bar  mode="indeterminate" [value]="progressValue"></mat-progress-bar> -->
 
-  <p-progressBar [showValue]="loading"  mode="indeterminate" [value]="20"></p-progressBar>
+  <p-progressBar styleClass="custom-style" *ngIf="loading" mode="indeterminate"></p-progressBar>
 </div>
 
 <div
   style="text-align: center; position: relative;width:fit-content ;  width: 100%; overflow-y: auto;overflow-x: auto; height: 92%; border-radius: 10px;margin-top: 20px;">
-  <mat-spinner *ngIf="loading" style="position: absolute;top: 50%; left: 50%;;"></mat-spinner>
+  <p-progressSpinner *ngIf="loading" strokeWidth='4'  [style]="{position: 'absolute',top: '50%', left: '50%'}">
+  </p-progressSpinner>
+  <!-- <mat-spinner *ngIf="loading" style="position: absolute;top: 50%; left: 50%;;"></mat-spinner> -->
   <table mat-table [dataSource]="dataSource!">
 
     <ng-container matColumnDef="actions">

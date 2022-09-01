@@ -67,7 +67,7 @@ export class UsersComponent implements AfterViewInit, OnInit {
           this.dataSource.data = data;
           this.loading = false;
         });
-    }, 15500);
+    }, 0);
   }
   openDialog(message: string, dialogType: number, userId?: number , activeUser?:boolean): void {
     const dialogRef = this.dialogBox.open(AlertDialogComponent, {

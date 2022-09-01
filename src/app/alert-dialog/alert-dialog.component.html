@@ -33,7 +33,8 @@
     <h3>Edit user details</h3>
   </div>
   <div mat-dialog-content *ngIf="data.dialogType == 3 && !isLoading">
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <p-progressSpinner *ngIf="isLoading" strokeWidth='5' ></p-progressSpinner>
+    <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
     <form action="" method="post">
       <mat-form-field appearance="outline">
         <mat-label>{{userData.id ?? 'no-content'}}</mat-label>
