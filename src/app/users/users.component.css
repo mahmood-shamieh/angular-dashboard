@@ -79,11 +79,17 @@ button {
   .row {
     width: 100%;
   }
+  span{
+    margin: auto;
+    color: aliceblue;
+    padding: 5px 5px;
+  }
 
   .table-data {
     display: inline-block;
     width: 60%;
     min-width: 60%;
+    padding: 5px 5px;
     white-space: normal;
     word-wrap: break-word;
   }
@@ -91,8 +97,10 @@ button {
   .table-head {
     display: inline-block;
     width: 40%;
+    text-align: center;
     min-width: 100px;
-    background-color: bisque;
+    padding-left: 20px;
+    background-color: rgba(0, 0, 0, 0.959);
     /* height: 100%; */
     /* background-color: aqua; */
   }
@@ -124,7 +132,7 @@ button {
 
   tr.mat-row {
     max-width: 100%;
-    white-space: pre-wrap;
+    white-space: normal;
     height: auto;
     word-break: break-word;
   }
