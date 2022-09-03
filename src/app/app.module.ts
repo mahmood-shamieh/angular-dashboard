@@ -25,12 +25,13 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import {StyleClassModule} from 'primeng/styleclass';
-import {ChipModule} from 'primeng/chip';
+import { StyleClassModule } from 'primeng/styleclass';
+import { ChipModule } from 'primeng/chip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import { LoloComponent } from './lolo/lolo.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     NotFoundComponent,
     HomePageComponent,
     AlertDialogComponent,
+    LoloComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     MatSelectModule,
     MatChipsModule,
     ProgressBarModule,
-    StyleClassModule,ChipModule
+    StyleClassModule,
+    ChipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

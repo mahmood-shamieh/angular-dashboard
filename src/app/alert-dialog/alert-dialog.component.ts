@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   faCircleExclamation,
@@ -7,8 +8,10 @@ import {
   faInfoCircle,
   faUserPen,
   faUserSlash,
-  faUserLarge
+  faUserLarge,
 } from '@fortawesome/free-solid-svg-icons';
+import { UserEntityModule } from '../Models/user-entity/user-entity.module';
+import { UsersService } from '../users/users-service.service';
 
 @Component({
   selector: 'app-alert-dialog',
@@ -16,21 +19,22 @@ import {
   styleUrls: ['./alert-dialog.component.css'],
 })
 export class AlertDialogComponent implements OnInit, AfterViewInit {
-  imagePath :string;
-  userData: any;
+  @Output() userUpdatedEvent :EventEmitter< any> = new EventEmitter();
+  userData: UserEntityModule;
   isLoading: boolean = true;
   alertIcon = faCircleExclamation;
   informationIcon = faInfoCircle;
   notificationIcon = faBell;
-  editIcon=faUserPen;
+  editIcon = faUserPen;
   activeUserIcon = faUserLarge;
   diactiveUserIcon = faUserSlash;
+  formControls: any;
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private httpClient: HttpClient
+    private UserService: UsersService
   ) {
-    this.imagePath = "./assets/warning.gif";
+    this.userData = new UserEntityModule();
   }
   ngAfterViewInit(): void {
     switch (this.data.dialogType) {
@@ -39,13 +43,10 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
         break;
       }
       case 2: {
-        console.log(this.data.userId);
-        this.httpClient
-          .get<any>('https://salty-tor-51245.herokuapp.com/users/' + this.data.userId)
-          // .get<any>('http://127.0.0.1:8081/users/' + this.data.userId)
-          .subscribe(
+        setTimeout(() => {
+          this.isLoading = true;
+          this.UserService.getUserInfo(this.data.userId).subscribe(
             (data) => {
-              console.log(data);
               this.userData = data;
               this.isLoading = false;
             },
@@ -53,22 +54,39 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
               console.log(error);
             }
           );
+        }, 0);
         break;
       }
       case 3: {
-        this.httpClient
-          .get<any>('https://salty-tor-51245.herokuapp.com/users/' + this.data.userId)
-          // .get<any>('http://127.0.0.1:8081/users/' + this.data.userId)
-          .subscribe(
+        setTimeout(() => {
+          this.isLoading = true;
+          this.UserService.getUserInfo(this.data.userId).subscribe(
             (data) => {
-              console.log(data);
-              this.userData = data;
+              this.userData.inialtProp(data);
               this.isLoading = false;
+              this.formControls = {
+                id:new FormControl(this.userData.id),
+                username: new FormControl(this.userData.username),
+                firstName: new FormControl(this.userData.firstName),
+                lastName: new FormControl(this.userData.lastName),
+                middleName: new FormControl(this.userData.middleName),
+                levelId: new FormControl(this.userData.levelId),
+                balance: new FormControl(this.userData.balance),
+                address: new FormControl(this.userData.address),
+                gender: new FormControl(this.userData.gender),
+                verified: new FormControl(this.userData.verified),
+                email: new FormControl(this.userData.email),
+                mobile: new FormControl(this.userData.mobile),
+                phone: new FormControl(this.userData.phone),
+                age: new FormControl(this.userData.age),
+                createdAt: new FormControl(this.userData.createdAt),
+              };
             },
             (error) => {
               console.log(error);
             }
           );
+        }, 0);
         break;
       }
       case 4: {
@@ -84,6 +102,22 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
         break;
       }
     }
+  }
+
+  updateUserEntity() {
+    this.userData.getUserDataFromFormGroup(this.formControls);
+    this.UserService.addUser(this.userData)
+      .pipe()
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.userUpdatedEvent.emit({});
+          window.location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   ngOnInit(): void {}

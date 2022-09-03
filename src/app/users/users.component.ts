@@ -20,6 +20,8 @@ import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 import { interval } from 'rxjs/internal/observable/interval';
 import { MatChip } from '@angular/material/chips';
 import { FormControl } from '@angular/forms';
+import { UsersService } from './users-service.service';
+import { UserEntityModule } from '../Models/user-entity/user-entity.module';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -33,8 +35,7 @@ export class UsersComponent implements AfterViewInit, OnInit {
   notActiveIcon = faToggleOff;
   infoIcon = faAddressCard;
   progressValue = 0;
-  text :FormControl;
-
+  text: FormControl;
   displayedColumns: string[] = [
     'ID',
     'USERNAME',
@@ -53,35 +54,55 @@ export class UsersComponent implements AfterViewInit, OnInit {
     'LEVEL-ID',
     'actions',
   ];
-  data: any;
-  dataSource = new MatTableDataSource<any>();
+  dataSource = new MatTableDataSource<UserEntityModule>();
   loading = true;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
-  ngAfterViewInit() {
+
+  constructor(private userService: UsersService, private dialogBox: MatDialog , ) {
+    this.text = new FormControl();
     this.dataSource.paginator = this.paginator!;
+    this.dataSource.data = [];
+  }
+
+  ngAfterViewInit() {
     setTimeout(() => {
-      this.http
-        // .get<any>('http://127.0.0.1:8081/users/all')
-        .get<any>('https://salty-tor-51245.herokuapp.com/users/all')
-        .subscribe((data) => {
-          this.dataSource.data = data;
-          this.loading = false;
-        });
+      this.loading = true;
+      this.userService
+        .getAllUsersInfo()
+        .pipe()
+        .subscribe(
+          (data) => {
+            console.log(data);
+            this.dataSource.data = data;
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      this.loading = false;
     }, 0);
   }
-  openDialog(message: string, dialogType: number, userId?: number , activeUser?:boolean): void {
+
+  openDialog(
+    message: string,
+    dialogType: number,
+    userId?: number,
+    activeUser?: boolean
+  ): void {
     const dialogRef = this.dialogBox.open(AlertDialogComponent, {
       // width: '250px',
-      data: { message: message, dialogType: dialogType, userId: userId ,active:activeUser},
+      data: {
+        message:message,
+        dialogType: dialogType,
+        userId: userId,
+        active: activeUser,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       // this.animal = result;
     });
-  }
-  constructor(private http: HttpClient, private dialogBox: MatDialog) {
-    this.text = new FormControl();
   }
 
   ngOnInit(): void {
@@ -104,7 +125,7 @@ export class UsersComponent implements AfterViewInit, OnInit {
   }
   toggleSelection(chip: MatChip) {
     chip.toggleSelected();
- }
+  }
   getRandomColor() {
     console.log(Math.floor((Math.random() * 10) % 2));
     switch ((Math.random() * 10) % 2) {

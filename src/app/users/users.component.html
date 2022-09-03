@@ -15,11 +15,6 @@
 <h2>Filters</h2>
 <div>
   <mat-chip-list aria-label="Filters" *ngIf="!loading" selectable multiple style="padding-left: 200px;">
-    <!-- <mat-chip [ngStyle]="{color: getRandomColor()}">One fish</mat-chip> -->
-    <!-- <mat-chip [color]="getRandomColor()">One fish</mat-chip>
-    <mat-chip [color]="getRandomColor()">Two fish</mat-chip>
-    <mat-chip [color]="getRandomColor()" selected>Primary fish</mat-chip>
-    <mat-chip [color]="getRandomColor()" selected>Accent fish</mat-chip> -->
     <mat-chip color="accent" #c="matChip" *ngFor="let item of displayedColumns" [value]='item'
       (click)="toggleSelection(c)">{{item}}</mat-chip>
   </mat-chip-list>
