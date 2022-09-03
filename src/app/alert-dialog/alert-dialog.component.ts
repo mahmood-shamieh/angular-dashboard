@@ -47,7 +47,7 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
           this.isLoading = true;
           this.UserService.getUserInfo(this.data.userId).subscribe(
             (data) => {
-              this.userData = data;
+              this.userData.inialtProp(data);
               this.isLoading = false;
             },
             (error) => {
@@ -90,7 +90,10 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
         break;
       }
       case 4: {
-        this.isLoading = false;
+        setTimeout(() => {
+          this.isLoading = false;
+        this.userData.id = this.data.userId;
+        }, 0);
         break;
       }
       case 5: {
@@ -107,6 +110,20 @@ export class AlertDialogComponent implements OnInit, AfterViewInit {
   updateUserEntity() {
     this.userData.getUserDataFromFormGroup(this.formControls);
     this.UserService.addUser(this.userData)
+      .pipe()
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.userUpdatedEvent.emit({});
+          window.location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+  deleteUserEntitiy() {
+    this.UserService.deleteUser(this.userData.id)
       .pipe()
       .subscribe(
         (data) => {

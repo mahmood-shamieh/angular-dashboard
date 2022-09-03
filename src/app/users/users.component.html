@@ -46,7 +46,7 @@
               (click)="openDialog('are you sure you want to send notification',3,element.id)">
               <fa-icon [icon]="editIcon"></fa-icon>
             </button>
-            <button class="btn btn-outline-danger" (click)="openDialog('are you sure you want to delete this user',4)">
+            <button class="btn btn-outline-danger" (click)="openDialog('are you sure you want to delete this user',4,element.id)">
               <fa-icon [icon]="deleteIcon"></fa-icon>
             </button>
             <button *ngIf="element.active" class="btn btn-outline-success"
